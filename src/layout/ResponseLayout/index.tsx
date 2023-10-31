@@ -1,5 +1,14 @@
+import { Outlet } from "react-router-dom";
+
+import useStyles from "./styles";
+
 const ResponseLayout = () => {
-  return <h1>ResponseLayout</h1>;
+  const classes = useStyles();
+  return (
+    <div className={classes.container}>
+      <Outlet />
+    </div>
+  );
 };
 
 export default ResponseLayout;

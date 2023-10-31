@@ -5,6 +5,7 @@ import GeneralLayout from "./layout/GeneralLayout";
 import ResponseLayout from "./layout/ResponseLayout";
 
 import NotFoundPage from "./pages/NotFound";
+import BlockUserPage from "./pages/BlockUser";
 
 import DashboardPage from "./pages/Dashboard";
 import AuthPage from "./pages/Auth";
@@ -33,6 +34,7 @@ export default function AppRoutes() {
       element: <ResponseLayout />,
       children: [
         { path: "404", element: <NotFoundPage /> },
+        { path: "403", element: <BlockUserPage /> },
         { path: "*", element: <Navigate to="/404" /> },
       ],
     },

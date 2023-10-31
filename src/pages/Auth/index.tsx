@@ -9,14 +9,43 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useSnackbar } from "notistack";
+import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
+
+import LoginValidation from "../../utils/validations/LoginValidation";
 
 import useStyles from "./styles";
-
 import styles from "./authPage.module.css";
 
 const AuthPage = () => {
   const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
+
   const [viewPass, setViewPass] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: LoginValidation,
+    validateOnChange: false,
+    onSubmit: async (values) => {
+      console.log(values);
+
+      enqueueSnackbar("Iniciaste sesión", {
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "right",
+        },
+        variant: "success",
+      });
+
+      navigate("/app/dashboard");
+    },
+  });
 
   return (
     <div>
@@ -89,19 +118,29 @@ const AuthPage = () => {
               </Grid>
               <Grid item container>
                 <TextField
+                  name="email"
                   variant="outlined"
-                  label="Correo"
+                  label="Correo Electrónico"
                   fullWidth
                   className={classes.textField}
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  error={!!formik.errors.email}
+                  helperText={formik.errors.email}
                 />
               </Grid>
               <Grid item container>
                 <TextField
+                  name="password"
                   variant="outlined"
                   label="Contraseña"
                   type={viewPass ? "text" : "password"}
                   fullWidth
                   className={classes.textField}
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  error={!!formik.errors.password}
+                  helperText={formik.errors.password}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -132,7 +171,11 @@ const AuthPage = () => {
                 />
               </Grid>
               <Grid item container justifyContent="flex-end">
-                <Button variant="contained" className={classes.button}>
+                <Button
+                  variant="contained"
+                  className={classes.button}
+                  onClick={formik.submitForm}
+                >
                   Ingresar
                 </Button>
               </Grid>

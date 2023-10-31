@@ -1,9 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
-const NotFoundPage = () => {
-  const navigate = useNavigate();
-
+const BlockUserPage = () => {
   return (
     <div
       style={{
@@ -17,7 +14,7 @@ const NotFoundPage = () => {
     >
       <Box
         component="img"
-        src="/assets/response/not_found.png"
+        src="/assets/response/block.png"
         alt="not found"
         sx={{
           width: { xs: "300px", md: "450px" },
@@ -25,20 +22,13 @@ const NotFoundPage = () => {
         }}
       />
       <Typography variant="h4" sx={{ textAlign: "center" }}>
-        ¡Oops!
+        Acceso denegado
       </Typography>
       <Typography variant="h5" sx={{ textAlign: "center" }}>
-        Parece que te has perdido en el camino.
+        Tu dirección IP ha sido bloqueada debido a múltiples intentos fallidos.
       </Typography>
-      <Button
-        variant="contained"
-        sx={{ color: "black", mt: 3 }}
-        onClick={() => navigate("/app/dashboard")}
-      >
-        Volver al Inicio
-      </Button>
     </div>
   );
 };
 
-export default NotFoundPage;
+export default BlockUserPage;
