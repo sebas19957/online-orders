@@ -13,6 +13,14 @@ import OrderPage from "./pages/Order";
 export default function AppRoutes() {
   const routes = useRoutes([
     {
+      path: "/",
+      element: <AuthLayout />,
+      children: [
+        { element: <Navigate to="/login" />, index: true },
+        { path: "login", element: <AuthPage /> },
+      ],
+    },
+    {
       path: "/app",
       element: <GeneralLayout />,
       children: [
@@ -21,20 +29,9 @@ export default function AppRoutes() {
         { path: "orders", element: <OrderPage /> },
       ],
     },
-
-    {
-      path: "/auth",
-      element: <AuthLayout />,
-      children: [
-        { element: <Navigate to="/auth/login" />, index: true },
-        { path: "login", element: <AuthPage /> },
-      ],
-    },
-
     {
       element: <ResponseLayout />,
       children: [
-        { element: <Navigate to="/auth/login" />, index: true },
         { path: "404", element: <NotFoundPage /> },
         { path: "*", element: <Navigate to="/404" /> },
       ],

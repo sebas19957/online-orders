@@ -5,7 +5,7 @@ import { grey } from "@mui/material/colors";
 export const Theme = createTheme({
   palette: {
     primary: {
-      main: "#5EF38C",
+      main: "#FE6E88",
       contrastText: "#FFF",
     },
     secondary: {
@@ -32,7 +32,7 @@ export const Theme = createTheme({
           textTransform: "inherit",
           outline: "none",
           fontWeight: "bold",
-          fontFamily: "Raleway",
+          fontFamily: "Lilita One, sans-serif",
           "&.raleway": {
             fontWeight: "bold",
           },
@@ -42,7 +42,7 @@ export const Theme = createTheme({
           "&.view": {
             color: "#FFF",
             background: grey[600],
-            borderRadius: 50,
+            borderRadius: 10,
             padding: "1.6px 0",
             "&:hover": {
               background: grey[700],
@@ -52,19 +52,19 @@ export const Theme = createTheme({
         },
         outlined: {
           borderWidth: 2,
-          borderRadius: 50,
+          borderRadius: 10,
         },
         outlinedPrimary: {
           borderWidth: 2,
           padding: "8px 20px",
           "&:hover": {
-            color: "#5EF38C",
+            color: "#FE6E88",
             borderWidth: 2,
           },
         },
         contained: {
           boxShadow: "none",
-          borderRadius: 50,
+          borderRadius: 10,
         },
         containedPrimary: {
           "&:hover": {
@@ -90,7 +90,7 @@ export const Theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: 50,
+          borderRadius: 10,
           "&  input[type=number]": {
             "&::-webkit-inner-spin-button": {
               display: "none !important",
@@ -105,7 +105,7 @@ export const Theme = createTheme({
     MuiInput: {
       styleOverrides: {
         root: {
-          borderRadius: 50,
+          borderRadius: 10,
           "&  input[type=number]": {
             "&::-webkit-inner-spin-button": {
               display: "none !important",
@@ -152,10 +152,10 @@ export const Theme = createTheme({
     MuiAvatar: {
       styleOverrides: {
         root: {
-          background: "#5EF38C",
+          background: "#FE6E88",
         },
         colorDefault: {
-          backgroundColor: "#5EF38C",
+          backgroundColor: "#FE6E88",
         },
       },
     },
