@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Button,
   Grid,
@@ -12,7 +12,6 @@ import {
 import { useSnackbar } from "notistack";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import LoginValidation from "../../utils/validations/LoginValidation";
 
@@ -27,7 +26,6 @@ const AuthPage = () => {
   const navigate = useNavigate();
 
   const [viewPass, setViewPass] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -37,17 +35,15 @@ const AuthPage = () => {
     validationSchema: LoginValidation,
     validateOnChange: false,
     onSubmit: async (values) => {
-      console.log(values);
-      setLoading(true);
-
       const ip = await getIp();
 
       try {
         const response = await login(values.email, values.password, ip);
 
-        console.log(response);
-
-        if (response?.ok) return navigate("/app/dashboard");
+        if (response?.ok) {
+          localStorage.setItem("username", values.email);
+          navigate("/app/dashboard");
+        }
       } catch (error: any) {
         console.log(error);
 
@@ -78,8 +74,6 @@ const AuthPage = () => {
               variant: "error",
             });
         }
-      } finally {
-        setLoading(false);
       }
     },
   });

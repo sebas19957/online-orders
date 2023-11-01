@@ -5,6 +5,8 @@ import { useSnackbar } from "notistack";
 
 import CreateOrderValidation from "../../utils/validations/CreateOrderValidation";
 
+import { createOrder } from "../../services/orders";
+
 import useStyles from "./styles";
 
 const DashboardPage = () => {
@@ -20,17 +22,33 @@ const DashboardPage = () => {
     validationSchema: CreateOrderValidation,
     validateOnChange: false,
     onSubmit: async (values) => {
-      console.log(values);
+      try {
+        const response = await createOrder(
+          values.product,
+          Number(values.quantity),
+          Number(values.price)
+        );
 
-      enqueueSnackbar("Producto creado", {
-        anchorOrigin: {
-          vertical: "top",
-          horizontal: "right",
-        },
-        variant: "success",
-      });
+        if (response?.ok) {
+          enqueueSnackbar("Producto creado", {
+            anchorOrigin: {
+              vertical: "top",
+              horizontal: "right",
+            },
+            variant: "error",
+          });
 
-      formik.resetForm();
+          formik.resetForm();
+        }
+      } catch (error: any) {
+        enqueueSnackbar(error?.message, {
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "right",
+          },
+          variant: "error",
+        });
+      }
     },
   });
 
