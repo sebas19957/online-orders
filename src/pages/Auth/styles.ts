@@ -3,14 +3,14 @@ import { Theme as theme } from "../../theme/Theme";
 
 export default makeStyles(() => ({
   paperContainer: {
-    [theme.breakpoints.between("xs", "sm")]: {
+    [theme.breakpoints.only("xs")]: {
       width: "90%",
     },
     [theme.breakpoints.between("sm", "md")]: {
-      width: "75%",
+      width: "65%",
     },
     [theme.breakpoints.between("md", "lg")]: {
-      width: "85%",
+      width: "65%",
     },
     [theme.breakpoints.up("lg")]: {
       width: "35%",

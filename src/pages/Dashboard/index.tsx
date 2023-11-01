@@ -40,7 +40,7 @@ const DashboardPage = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "calc(100vh - 350px)",
+        height: "calc(100vh - 200px)",
       }}
     >
       <Paper className={classes.paperContainer}>
