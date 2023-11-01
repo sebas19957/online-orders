@@ -35,7 +35,7 @@ const DashboardPage = () => {
               vertical: "top",
               horizontal: "right",
             },
-            variant: "error",
+            variant: "success",
           });
 
           formik.resetForm();
