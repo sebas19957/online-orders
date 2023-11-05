@@ -6,13 +6,17 @@ import { AppTheme } from "./theme/AppTheme";
 
 import AppRoutes from "./routes";
 
+import SnackbarTheme from "./theme/SnackbarTheme";
+
 function App() {
   return (
-    <BrowserRouter>
-      <AppTheme>
-        <AppRoutes />
-      </AppTheme>
-    </BrowserRouter>
+    <SnackbarTheme>
+      <BrowserRouter>
+        <AppTheme>
+          <AppRoutes />
+        </AppTheme>
+      </BrowserRouter>
+    </SnackbarTheme>
   );
 }
 
